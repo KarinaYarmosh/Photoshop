@@ -61,6 +61,17 @@ class Window(Frame):
         #new file end with filename
         if self.filename.endswith(".pbm")  or self.filename.endswith(".pgm") or self.filename.endswith(".ppm"):
             print("OK")
+            #end of file - teraz pbm
+            self.f = "newfile" + ".pbm"
+            #delete all comments in filename and save to newfile
+            with open(self.filename, 'r') as file:
+                print('opened file 1')
+                with open(self.f, 'w') as newfile:
+                    print('opened file 2')
+                    for line in file:
+                        print("line: ", line)
+                        if not line.startswith('#'):
+                            newfile.write(line)
         else:
             print("Error")
 
